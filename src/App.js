@@ -7,6 +7,10 @@ import axios from "axios";
 export const MyContext = createContext();
 function App() {
   const [data, setData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -19,7 +23,7 @@ function App() {
             "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com",
           },
         };
-  
+
         const response = await axios.request(options);
         console.log(response.data);
         setData(response.data);
@@ -29,14 +33,18 @@ function App() {
     };
 
     fetchData();
-  }, [])
-  return (
-    <MyContext.Provider value={data}>
+  }, []);
 
-    <div className="App">
-      <Header />
-      <MoviesList />
-    </div>
+  const filteredMovie = data.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
+  return (
+    <MyContext.Provider value={{ filteredMovie, setSearchTerm }}>
+      <div className="App">
+        <Header />
+        <MoviesList />
+      </div>
     </MyContext.Provider>
   );
 }

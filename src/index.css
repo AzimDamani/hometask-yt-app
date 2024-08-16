@@ -59,6 +59,10 @@ code {
   border-radius: 20px;
 }
 
+.movieitem h2 {
+  color: rgb(252, 90, 90);
+  text-align: left;
+}
 
 .preview-img{
   background-color: grey;
@@ -86,6 +90,14 @@ code {
   margin: auto;
   color: gold;
 }
+
+
+.search button{
+  background-color: black;
+  border: none;
+  color: white;
+}
+
 @media (max-width: 900px){
   .movielist {
     grid-template-columns: repeat(2, 1fr); /* Two columns instead of four */

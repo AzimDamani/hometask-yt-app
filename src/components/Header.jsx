@@ -2,6 +2,7 @@ import React from "react";
 import "../index.css";
 import Search from "./Search";
 const Header = ({getData}) => {
+
     return(
         <div className="header">
             <div className="logo">
